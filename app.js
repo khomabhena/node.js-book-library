@@ -3,6 +3,7 @@ const express = require('express');
 const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
+require('dotenv').config()
 
 const indexRouter = require("./routes/index")
 const usersRouter = require("./routes/users")
@@ -14,7 +15,8 @@ const helmet = require('helmet')
 const app = express();
 const mongoose = require('mongoose')
 mongoose.set("strictQuery", false)
-const mongoDB = "mongodb+srv://khomabhena:ColwanyMab28@cluster0.krkkba9.mongodb.net/local_library?retryWrites=true&w=majority"
+// const mongoDB = "mongodb+srv://khomabhena:ColwanyMab28@cluster0.krkkba9.mongodb.net/local_library?retryWrites=true&w=majority"
+const mongoDB = "" + process.env.MONGO_DB_URL
 
 main().then(console.log('Connected to Database')).catch((err) => console.log(err))
 async function main() {
